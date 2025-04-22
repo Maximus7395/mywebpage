@@ -1,0 +1,85 @@
+<!--
+ * WEB222 – Assignment 06
+ *
+ * I declare that this assignment is my own work in accordance with
+ * Seneca Academic Policy. No part of this assignment has been
+ * copied manually or electronically from any other source
+ * (including web sites) or distributed to other students.
+ *
+ * Please update the following with your information:
+ *
+ *      Name:       <Kevin Christie>
+ *      Student ID: <131362238>
+ *      Date:       <13 April 2025>
+ */
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a New Artist</title>
+    <link rel="stylesheet" href="./css/water.css" />
+  </head>
+  <body>
+    <h2>Request a New Artist</h2>
+    <form class="glow" method="POST" action="https://httpbin.org/post">
+      <label for="artistName">Artist's Name:</label>
+      <input type="text" id="artistName" name="artistName" required />
+
+      <label for="musicGenre">Music Genre:</label>
+      <input list="genres" id="musicGenre" name="musicGenre" required />
+      <datalist id="genres">
+        <option value="Rock"></option>
+        <option value="Pop"></option>
+        <option value="Hip Hop"></option>
+        <option value="Jazz"></option>
+        <option value="Electronic"></option>
+        <option value="Classical"></option>
+        <option value="R&B"></option>
+        <option value="Country"></option>
+        <option value="Reggae"></option>
+        <option value="Blues"></option>
+      </datalist>
+
+      <label for="socialMedia">Social Media URLs (comma-separated):</label>
+      <input
+        type="text"
+        id="socialMedia"
+        name="socialMedia"
+        placeholder="https://www.instagram.com/johndoe, https://www.youtube.com/watch"
+        pattern="(https?://[^,\s]+)(,\s*https?://[^,\s]+)*"
+        required
+      />
+
+      <label>Example Songs/Videos:</label>
+      <div id="mediaLinks">
+        <div class="media-input">
+          <input
+            type="url"
+            name="mediaLinks[]"
+            class="dynamic-input"
+            placeholder="https://example.com"
+            required
+            pattern="https?://.+"
+          />
+        </div>
+      </div>
+      <button type="button" onclick="addMediaInput()">Add another link</button>
+
+      <label>
+        <input id="checkboxed" type="checkbox" name="explicitLyrics" id="explicitLyrics" />
+        Contains explicit lyrics
+      </label>
+      <br />
+      <label for="description"> Why should this artist be added? </label>
+      <textarea id="description" name="description" rows="6" required></textarea>
+
+      <button type="submit">Submit Artist</button>
+      <button type="reset">Reset</button>
+    </form>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>
